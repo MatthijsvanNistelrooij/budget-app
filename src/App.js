@@ -1,11 +1,12 @@
+import React from "react"
 import Navbar from "./Navbar"
-import About from "./pages/About"
-import Dashboard from "./pages/Dashboard"
+import LineGraph from "./pages/LineGraph"
 import Home from "./pages/Home"
 import Budgets from "./pages/Budgets"
-
+import CalanderPage from "./pages/CalanderPage"
+import Dropzone from "./pages/Dropzone"
 import { Route, Routes } from "react-router-dom"
-import React from "react"
+import ExpenseTracker from "./pages/ExpenseTracker"
 
 export default function App() {
   return (
@@ -16,8 +17,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/budgets" element={<Budgets />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/linegraph" element={<LineGraph />} />
+          <Route path="/calander" element={<CalanderPage />} />
+          <Route path="/drag_and_drop" element={<Dropzone />} />
+          <Route path="/expense_tracker" element={<ExpenseTracker />} />
         </Routes>
       </div>
     </>

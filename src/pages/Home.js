@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap"
 const myColumn = () => {
   return (
     <Col className="p-1">
-      <img src="https://unsplash.it/100/80" className="image" />
+      <img src="https://unsplash.it/100/80" className="image" alt="no_image.jpg" />
     </Col>
   )
 }

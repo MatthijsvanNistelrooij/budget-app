@@ -11,8 +11,8 @@ body {
     margin: 0;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
+    background-color:#061121;
 }
-
 
 .container {
     padding: 5%;
@@ -28,7 +28,6 @@ body {
     gap: 2rem;
     padding: 0 1rem;
     align-items: stretch;
-    /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
 }
 
 .nav a {
@@ -76,13 +75,146 @@ body {
 }
 
 .image {
-    transition: transform .7s ease-in-out;
+    transition: transform 30s ease-in-out;
   }
 
-  .image:hover {
-      -webkit-transform: scaleX(-1);
-      transform: scaleX(-1);
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+.image:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
 
+
+.total { 
+    color: grey;
+    font-size: 12px;
+}
+
+.totalSpan {
+    font-size: 8px;
+}
+
+
+.dashboard_div {
+    padding: 10px;
+    padding-left: 0px;
+}
+
+.expense-input {
+    background-color: #0d1d2d;
+    padding: 1%;
+    min-height: 50px;
+    border-radius: 10px;
+}
+
+.expense-graph {
+    background-color: #0d1d2d;
+    padding: 3%;
+    padding-top: 10%;
+    padding-left: 4%;
+    padding-bottom: 5%;
+    min-height: 650px;
+    border-radius: 10px;
+}
+
+.expense-legend {
+    background-color: transparent;
+    color: lightgrey;
+    padding: 3%;
+    padding-left: 15%;
+    border-radius: 10px;
+}
+
+.expense-legend-label {
+    margin-right: 4%;
+}
+
+.expense-tooltip { 
+    background-color: rgba(18, 31, 54, 0.8);
+    border: 1px solid rgb(27, 74, 88);
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+    padding: 12px;
+    min-width: 120px;
+    height: 80px;
+}
+
+.date_h5 { 
+  margin-bottom: 15px;
+  color: rgb(154, 168, 168);
+}
+
+.expense-list-item {
+    list-style: none;
+    margin-left: -32px; 
+    padding: 4%;
+    border: 1px solid #0d252d;
+    background-color: #0d1d2d; 
+    color: white 
+}
+
+.expense-list-item:hover {
+    background-color: #1b414e; 
+}
+
+.expense-item-span { 
+    background-color: #061121;
+    font-size: 10px;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 5px;
+    margin-left: -6px;
+}
+
+.title {
+    justify-content: space-between;
+}
+
+.expense-icon-style {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.budget-expenses {
+    color: rgb(154, 168, 168);
+    font-size: 22px;;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.show-filter-icon {
+    padding: 15px;
+}
+
+.graph-select {
+    width: auto;
+    padding: 5%;
+    padding-top: 2%; 
+}
+
+.label-select {
+    background-color: #0d1d2d;
+    color: white;
+    border: 2px solid #11263c;
+    border-radius: 5px;
+    padding: 5%;
+    padding-left: 10%;
+    padding-right: 15%;
+}
+
+.option {
+    cursor: pointer;
+    margin-right: 10px;
+    color: gray;
+  }
+  
+  .selected-option {
+    cursor: pointer;
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+  }

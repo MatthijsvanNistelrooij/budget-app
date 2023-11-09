@@ -1,0 +1,46 @@
+.dropzone {
+    background-color: #0d1d2d;
+    padding: 1%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    min-height: 500px;
+    border-radius: 10px;
+}
+
+.draggable {
+    color: #c8c8c8;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: grabbing;
+    margin-top: 5px;
+    border: 1px solid #0d1d2d;
+    transition: transform 0.3s ease-in-out;
+}
+
+.draggable:hover { 
+    color: #c8c8c8;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: grabbing;
+    margin-top: 5px;
+    border: 1px solid #222222;
+    transition: transform 0.3s ease-in-out;
+}
+
+.draggable.drag-transition {
+    transform: translate(0, 0);
+  }
+
+.small_span { 
+    font-size: 10px;
+
+    background-color: rgb(134, 134, 134, 0.2);
+}
+
+.delete_icon {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    float: right;
+    margin: 5px;
+    cursor: pointer;
+}

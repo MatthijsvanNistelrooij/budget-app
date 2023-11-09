@@ -1,14 +1,14 @@
 // @ts-nocheck
 import React from "react"
 import { useState } from "react"
-import { Container, Stack, Button, Row } from "react-bootstrap"
-import BudgetCard from "../components/BudgetCard"
-import AddBudgetModal from "../components/AddBudgetModal"
-import AddExpenseModal from "../components/AddExpenseModal"
-import UncategorizedBudgetCard from "../components/UncategorizedBudgetCard"
+import { Stack, Button, Row } from "react-bootstrap"
+import BudgetCard from "../budget-components/BudgetCard"
+import AddBudgetModal from "../budget-components/AddBudgetModal"
+import AddExpenseModal from "../budget-components/AddExpenseModal"
+import UncategorizedBudgetCard from "../budget-components/UncategorizedBudgetCard"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "../contexts/BudgetsContext"
-import TotalBudgetCard from "../components/TotalBudgetCard"
-import ViewExpensesModal from "../components/ViewExpensesModal"
+import TotalBudgetCard from "../budget-components/TotalBudgetCard"
+import ViewExpensesModal from "../budget-components/ViewExpensesModal"
 
 export default function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -21,19 +21,38 @@ export default function App() {
     setShowExpenseModal(true)
     setAddExpenseModalBudgetId(budgetId)
   }
+  // Calculate the amounts and create a new array including both budget and amount
+  const budgetsWithAmounts = budgets.map((budget) => {
+    const amount = getBudgetExpenses(budget.id).reduce(
+      (total, expense) => total + expense.amount,
+      0
+    )
+    return { budget, amount }
+  })
+
+  // Sort the new array based on the amount property (ascending order)
+  budgetsWithAmounts.sort((a, b) => b.amount - a.amount);
 
   return (
     <>
       <TotalBudgetCard />
       <Stack direction="horizontal" gap="2" className="mb-5 mt-5">
-        <h1 className="me-auto" style={{ color: "lightgray", textTransform: 'uppercase' }}>
+        <h2
+          className="me-auto"
+          style={{ color: "lightgray", textTransform: "uppercase" }}
+        >
           Budgets
-        </h1>
+        </h2>
 
-        <Button variant="light" onClick={() => setShowAddBudgetModal(true)}>
+        <Button
+          className="btn-sm"
+          variant="light"
+          onClick={() => setShowAddBudgetModal(true)}
+        >
           Add Budget
         </Button>
         <Button
+          className="btn-sm"
           variant="outline-light"
           onClick={() => openAddExpenseModal(true)}
         >
@@ -41,7 +60,7 @@ export default function App() {
         </Button>
       </Stack>
 
-      {budgets.map((budget) => {
+      {/* {budgets.map((budget) => {
         const amount = getBudgetExpenses(budget.id).reduce(
           (total, expense) => total + expense.amount,
           0
@@ -64,7 +83,27 @@ export default function App() {
             <hr />
           </>
         )
-      })}
+      })} */}
+
+      {budgetsWithAmounts.map(({ budget, amount }) => (
+        <>
+          <Row className="p-0 pb-1">
+            <BudgetCard
+              key={budget.id}
+              name={budget.name}
+              amount={amount}
+              max={budget.max}
+              gray
+              onAddExpenseClick={() => openAddExpenseModal(budget.id)}
+              onViewExpensesClick={() =>
+                setViewExpensesModalBudgetId(budget.id)
+              }
+            />
+          </Row>
+          <hr />
+        </>
+      ))}
+
       <Row className="mt-5">
         <UncategorizedBudgetCard
           onAddExpenseClick={openAddExpenseModal}
